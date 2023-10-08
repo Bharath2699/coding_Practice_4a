@@ -71,9 +71,9 @@ app.get("/players/:playerId", async (request, response) => {
 });
 module.exports = app;
 
-app.put("players/:playerId/", async (request, response) => {
+app.put("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
-  const { playerDetails } = request.body;
+  const playerDetails = request.body;
   const { playerName, jerseyNumber, role } = playerDetails;
   const updatePlayersQuery = `
   UPDATE cricket_team
@@ -89,7 +89,7 @@ app.put("players/:playerId/", async (request, response) => {
 });
 module.exports = app;
 
-app.delete("players/:playerId/", async (request, response) => {
+app.delete("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
   const deleteQuery = `
     DELETE FROM cricket_team
